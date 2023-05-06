@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { VIDEO_API, VIDEO_LIST_API } from "../../utilis/helper";
+import { VIDEO_LIST_API } from "../../utilis/helper";
 import { Video } from "./Video";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -8,7 +8,6 @@ import {
   updateLoadingStatus,
   updateVideoData,
   updateErrorStatus,
-  videState,
 } from "../../utilis/videosSlice";
 import { VideoEffect } from "../shimmerEffect/VideoEffect";
 import { NotFound } from "./NotFound";

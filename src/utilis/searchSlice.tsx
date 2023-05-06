@@ -33,13 +33,12 @@ export const searchSlice = createSlice({
       state.loading = action.payload;
     },
     updateSearchResult: (state, action: PayloadAction<object>) => {
-      state.searchData = action.payload;
+      state.searchData = Object.assign(state.searchData, action.payload);
     },
     updateIsSearch: (state, action: PayloadAction<boolean>) => {
       state.isSearch = action.payload;
     },
     updateSearchValue: (state, action: PayloadAction<string>) => {
-      console.log(action.payload, "action.payload");
       state.searchValue = action.payload;
     },
     updateSearchErrorStatus: (state, action: PayloadAction<boolean>) => {

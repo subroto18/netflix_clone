@@ -45,7 +45,7 @@ export const NavBar: React.FC = () => {
       </li>
       <li className="text-sm mx-2 py-1 hover:font-bold">
         <NavLink
-          to="/my-list"
+          to="/lannguage"
           className={({ isActive }) => (isActive ? "font-bold" : "text-sm")}
         >
           Browse by Langauges

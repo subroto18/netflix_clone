@@ -7,6 +7,7 @@ import { RootState } from "../../utilis/store";
 import { ColorRing } from "react-loader-spinner";
 import { showModal } from "../../utilis/appSlice";
 import { IMAGE_API_URL } from "../../utilis/helper";
+import { TiTimes } from "react-icons/ti";
 
 export const Modal: React.FC = () => {
   const loading = useSelector((state: RootState) => state.videoDetails.loading);
@@ -38,7 +39,11 @@ export const Modal: React.FC = () => {
 
   return (
     <Transition appear show={isModalOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-50 " onClose={hideModal}>
+      <Dialog
+        as="div"
+        className="relative z-50 bg-slate-900"
+        onClose={hideModal}
+      >
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -62,7 +67,11 @@ export const Modal: React.FC = () => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className="bg-slate-900 w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <TiTimes
+                  onClick={hideModal}
+                  className="absolute top-3 text-black right-2 cursor-pointer "
+                />
                 <div>
                   {loading ? (
                     <div className="h-[15rem] flex justify-center items-center">
@@ -90,7 +99,7 @@ export const Modal: React.FC = () => {
                     </div>
                   ) : (
                     <div>
-                      <div className="w-[100%] h-[20rem] sm:w-[15rem] sm:h-[15rem] mb-3 sm:mb-0 md:mb-0 lg:mb-0  rounded auto float-left mr-3">
+                      <div className="w-[100%] h-[20rem] sm:w-[15rem] sm:h-[20rem] mb-3 sm:mb-0 md:mb-0 lg:mb-0  rounded auto float-left mr-3">
                         <img
                           src={thumbnail}
                           alt="poster"
@@ -110,7 +119,7 @@ export const Modal: React.FC = () => {
                           {description}
                         </p>
                         <div className="flex justify-between">
-                          <p className="mt-2">
+                          <p className="mt-1">
                             <span className="text-sm mr-2">Rating:</span>
                             <span className="font-bold">{`${vote_average.toFixed(
                               2

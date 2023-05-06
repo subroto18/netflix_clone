@@ -11,8 +11,8 @@ export const Home = () => {
   return (
     <>
       <Header />
-      {!isSearch && <Poster />}
-      <VideoContainer></VideoContainer>
+       {!isSearch && <Poster />}
+       <VideoContainer></VideoContainer>
     </>
   );
 };

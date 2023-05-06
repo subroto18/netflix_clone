@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   LOGO,
   AVATAR,
@@ -19,7 +19,7 @@ import {
   updateSearchResult,
   updateSearchErrorStatus,
 } from "../../utilis/searchSlice";
-
+import { Link } from "react-router-dom";
 import {
   updateLoadingStatus,
   updateVideoData,
@@ -30,7 +30,7 @@ export const Header: React.FC = () => {
   const [sticky, setSticky] = useState<boolean>(false);
   const [toggle, setToggle] = useState<boolean>(false);
   const isSearch = useSelector((state: RootState) => state.search.isSearch);
-
+  const searchData = useSelector((state: RootState) => state.search.searchData);
   const searchValue = useSelector(
     (state: RootState) => state.search.searchValue
   );
@@ -68,16 +68,22 @@ export const Header: React.FC = () => {
     let searchApi = VIDEO_SEARCH_API(searchValue);
     if (searchValue !== "") {
       try {
-        dispatch(updateSearchLoading(true));
-        let data = await fetch(searchApi);
-        let json = await data.json();
-        dispatch(updateSearchLoading(false));
-        dispatch(
-          updateSearchResult({
-            [searchValue]: json.results,
-          })
-        );
-        dispatch(updateVideoData(json.results));
+        // if search result is already stored in search slice then no need to call search api again
+
+        if (searchData[searchValue]) {
+          dispatch(updateVideoData(searchData[searchValue]));
+        } else {
+          dispatch(updateSearchLoading(true));
+          let data = await fetch(searchApi);
+          let json = await data.json();
+          dispatch(updateSearchLoading(false));
+          dispatch(
+            updateSearchResult({
+              [searchValue]: json.results,
+            })
+          );
+          dispatch(updateVideoData(json.results));
+        }
       } catch (error: unknown) {
         dispatch(updateSearchLoading(false));
         dispatch(updateSearchErrorStatus(true));
@@ -127,6 +133,8 @@ export const Header: React.FC = () => {
     window.scroll(0, 0);
   };
 
+  console.log(searchData, "searchData");
+
   return (
     <div
       className={`${
@@ -137,7 +145,9 @@ export const Header: React.FC = () => {
         <div className="flex justify-between m-auto w-[97%]">
           <div className="flex">
             <div>
-              <img src={LOGO} alt="logo" className="h-20" />
+              <Link to="/">
+                <img src={LOGO} alt="logo" className="h-20" />
+              </Link>
             </div>
 
             <div className="relative md:hidden">
