@@ -1,6 +1,6 @@
 import React from "react";
 
-export const PosterApiError: React.FC = () => {
+export const VideoApiError: React.FC = () => {
   return (
     <div className="bg-slate-900">
       <div

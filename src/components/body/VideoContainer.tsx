@@ -11,6 +11,7 @@ import {
 } from "../../utilis/videosSlice";
 import { VideoEffect } from "../shimmerEffect/VideoEffect";
 import { NotFound } from "./NotFound";
+import { VideoApiError } from "../ApiError/VideoApiError";
 
 const VideoContainer: React.FC = () => {
   const loading = useSelector((state: RootState) => state.video.loading); // while vide load for the first time
@@ -18,6 +19,8 @@ const VideoContainer: React.FC = () => {
   const isSearch = useSelector((state: RootState) => state.search.isSearch); // check  search bar is action or not
   const dispatch = useDispatch();
   const videoData = useSelector((state: RootState) => state.video.data);
+  const videoError = useSelector((state: RootState) => state.video.error);
+  const searchError = useSelector((state: RootState) => state.search.error);
   const searchValue = useSelector(
     (state: RootState) => state.search.searchValue
   );
@@ -56,10 +59,20 @@ const VideoContainer: React.FC = () => {
               <VideoEffect />
             ) : (
               <>
-                {videoData.length > 0 ? (
-                  <Video title={searchValue} videoData={videoData}></Video>
+                {/* if search video  api failed to load show the error message */}
+
+                {searchError ? (
+                  <>
+                    <VideoApiError />
+                  </>
                 ) : (
-                  <NotFound></NotFound>
+                  <>
+                    {videoData.length > 0 ? (
+                      <Video title={searchValue} videoData={videoData}></Video>
+                    ) : (
+                      <NotFound></NotFound>
+                    )}
+                  </>
                 )}
               </>
             )}
@@ -69,7 +82,17 @@ const VideoContainer: React.FC = () => {
             {loading ? (
               <VideoEffect />
             ) : (
-              <Video title="Popular Movie's" videoData={videoData}></Video>
+              <>
+                {videoError ? (
+                  <>
+                    <VideoApiError />
+                  </>
+                ) : (
+                  <>
+                    <Video title={searchValue} videoData={videoData}></Video>
+                  </>
+                )}
+              </>
             )}
           </>
         )}
