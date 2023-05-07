@@ -132,9 +132,6 @@ export const Header: React.FC = () => {
     dispatch(updateIsSearch(true));
     window.scroll(0, 0);
   };
-
-  console.log(searchData, "searchData");
-
   return (
     <div
       className={`${

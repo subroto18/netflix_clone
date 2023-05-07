@@ -122,7 +122,7 @@ export const Modal: React.FC = () => {
                           <p className="mt-1">
                             <span className="text-sm mr-2">Rating:</span>
                             <span className="font-bold">{`${vote_average.toFixed(
-                              2
+                              1
                             )} /10.0`}</span>
                           </p>
                         </div>

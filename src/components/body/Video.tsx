@@ -71,7 +71,7 @@ export const Video = (props: Props) => {
                   <div>
                     <div className="flex text-lg">
                       <AiFillStar className="mr-2 mt-1 text-yellow-300"></AiFillStar>
-                      {`${data.vote_average}/10.0`}
+                      {`${data.vote_average?.toFixed(1)}/10.0`}
                     </div>
                     <button
                       onClick={() => isModalOpen(data.id)}

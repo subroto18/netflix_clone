@@ -17,9 +17,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ✅ TypeScript
 ✅ Tailwind
 
+## Used Api
+
+https://api.themoviedb.org
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+Before run `npm start` run `npm install` first, to download node package
 
 ### `npm start`
 
