@@ -21,6 +21,7 @@ export const Poster: React.FC = () => {
   let title: any;
   let description: any;
   let backgorund_thumbnail: any;
+  let id: any;
 
   useEffect(() => {
     getPosterDetails();
@@ -46,7 +47,7 @@ export const Poster: React.FC = () => {
   };
 
   title = posterData?.original_title;
-
+  id = posterData?.id;
   description = posterData.overview?.length
     ? posterData.overview?.substring(0, 200) + "..."
     : posterData.overview;
@@ -85,7 +86,7 @@ export const Poster: React.FC = () => {
               </button>
 
               <button
-                className="rounded bg-slate-50 text-black w-[100%] h-[2.5rem] pt-2 md:w-[35%]
+                className="rounded bg-white text-black w-[100%] h-[2.5rem] pt-2 md:w-[35%]
                 lg:w-[25%]
                    text-center justify-center mt-4  font-bold p-3 px-4 rounded flex"
               >

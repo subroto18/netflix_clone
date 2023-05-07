@@ -4,6 +4,7 @@ type PosterData = {
   original_title?: string;
   poster_path?: string;
   overview?: string;
+  id?: number;
 };
 
 export interface postSlice {
