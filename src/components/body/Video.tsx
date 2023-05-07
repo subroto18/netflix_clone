@@ -56,8 +56,11 @@ export const Video = (props: Props) => {
       <div className="grid grid-cols-2 sm:grid-cols-3   md:grid-cols-4 lg:grid-cols-6 gap-2 pt-4">
         {props.videoData.map((data: videoData) => {
           return (
-            <div key={data.id} className="relative w-[100%] h-[20rem] rounded">
-              <div className="h-[20rem] rounded relative group rounded">
+            <div
+              key={data.id}
+              className="relative w-[100%] h-[15rem] sm:h-[20rem] mb-2 rounded"
+            >
+              <div className="h-[15rem] sm:h-[20rem] rounded relative group rounded">
                 <img
                   src={IMAGE_API_URL + data.poster_path}
                   alt="thumbnail"

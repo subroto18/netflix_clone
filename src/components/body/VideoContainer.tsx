@@ -48,7 +48,7 @@ export const VideoContainer: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#0d0401] min-h-screen  py-5">
+    <div className="bg-black min-h-screen  py-5">
       <div className={`w-[97%] m-auto ${isSearch && "my-[5rem]"} `}>
         {isSearch ? (
           <>

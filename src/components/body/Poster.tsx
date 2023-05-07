@@ -58,7 +58,7 @@ export const Poster: React.FC = () => {
   ) : apiError ? (
     <PosterApiError />
   ) : (
-    <div className="bg-slate-900 bg-blend-multiply relative">
+    <div className="bg-slate-900 relative shadow-lh">
       <div
         className="h-[550px] md:h-[600]"
         style={{
@@ -70,14 +70,14 @@ export const Poster: React.FC = () => {
       >
         <div className="bg-blend-overlay absolute bg-black-rgba left-0 right-0 top-0 bottom-0">
           <div className="items-center w-[80%] sm:w-[60%] md:w-[50%]  ml-[3rem] absolute z-50 bottom-20">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
+            <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
               {title}
             </h1>
-            <p className="text-sm md:text-lg text-white">{description}</p>
-            <div className="flex">
+            <p className="text-md md:text-lg text-white">{description}</p>
+            <div className="sm:flex">
               <button
-                className="rounded bg-white text-black w-[40%] h-[2.5rem] pt-2 md:w-[35%]
-                lg:w-[20%]
+                className="rounded bg-white text-black w-[100%] h-[2.5rem] pt-2 md:w-[45%]
+                lg:w-[25%]
                text-center justify-center mt-4  font-bold  px-4 rounded flex mr-3"
               >
                 <BsFillPlayFill className="font-2xl mt-1 mr-2 " />
@@ -85,8 +85,8 @@ export const Poster: React.FC = () => {
               </button>
 
               <button
-                className="rounded bg-slate-50 text-black w-[40%] h-[2.5rem] pt-2 md:w-[35%]
-                lg:w-[20%]
+                className="rounded bg-slate-50 text-black w-[100%] h-[2.5rem] pt-2 md:w-[35%]
+                lg:w-[25%]
                    text-center justify-center mt-4  font-bold p-3 px-4 rounded flex"
               >
                 <AiOutlineInfoCircle className="font-2xl mt-1 mr-2" />
