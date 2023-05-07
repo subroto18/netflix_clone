@@ -12,7 +12,7 @@ import {
 import { VideoEffect } from "../shimmerEffect/VideoEffect";
 import { NotFound } from "./NotFound";
 
-export const VideoContainer: React.FC = () => {
+const VideoContainer: React.FC = () => {
   const loading = useSelector((state: RootState) => state.video.loading); // while vide load for the first time
   const searchLoading = useSelector((state: RootState) => state.search.loading); // while search data fetching
   const isSearch = useSelector((state: RootState) => state.search.isSearch); // check  search bar is action or not
@@ -77,3 +77,5 @@ export const VideoContainer: React.FC = () => {
     </div>
   );
 };
+
+export default VideoContainer;
